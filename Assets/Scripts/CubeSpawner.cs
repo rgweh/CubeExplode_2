@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeDuplicator : MonoBehaviour
+public class CubeSpawner : MonoBehaviour
 {
     [SerializeField] private int _minAmount = 2;
     [SerializeField] private int _maxAmount = 6;
-    [SerializeField] private Exploder _exploder;
 
-    private void Awake()
-    {
-        _exploder.OnExploded += DestroyObject;
-    }
-
-    public List<Cube> Duplicate(Cube cube)
+    public List<Cube> SpawnCubes(Cube cube)
     {
         int amount = Random.Range(_minAmount, _maxAmount + 1);
         List<Cube> createdCubes = new List<Cube>();
@@ -26,8 +20,8 @@ public class CubeDuplicator : MonoBehaviour
         return createdCubes;
     }
 
-    private void DestroyObject(GameObject obj)
+    public void DestroyCube(Cube cube)
     {
-        Destroy(obj);
+        Destroy(cube.gameObject);
     }
 }

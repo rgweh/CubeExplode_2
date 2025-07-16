@@ -5,7 +5,7 @@ public class ClickReader : MonoBehaviour
 {
     private int _leftMouseButton = 0;
 
-    public event Action<Cube> OnCubeClicked;
+    public event Action<Cube> CubeClicked;
 
     private void Update()
     {
@@ -15,12 +15,8 @@ public class ClickReader : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                Cube cube = hit.collider.GetComponent<Cube>();
-
-                if (cube != null)
-                {
-                    OnCubeClicked?.Invoke(cube);
-                }
+                if(hit.collider.TryGetComponent(out Cube cube))
+                    CubeClicked(cube);
             }
         }
     }
