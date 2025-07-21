@@ -8,25 +8,27 @@ public class Cube : MonoBehaviour
 {
     [SerializeField] private int _generation;
 
-    private Renderer _renderer;
-    private Rigidbody _rigidbody;
-    
-    public float ScaleReduce = 2;
-    public int ExplodeForce = 300;
-    public int ExplodeRadius = 3;
-    public float ActionChance;
+    private float scaleReduce = 2;
+    private int _explodeForce = 300;
+    private int _explodeRadius = 3;
+    private float _actionChance;
+    private Renderer Renderer;
+
+    public Rigidbody Rigidbody;
+    public int ExplodeForce => _explodeForce;
+    public int ExplodeRadius => _explodeRadius;
+    public float ActionChance => _actionChance;
 
     private void Awake()
     {
         _generation++;
-        ExplodeForce *= 2;
-        ExplodeRadius *= 2;
-        ActionChance = 100 / _generation;
+        _explodeForce *= 2;
+        _explodeRadius *= 2;
+        _actionChance = 100 / _generation;
 
-        _renderer = GetComponent<Renderer>();
-        _renderer.material.color = Random.ColorHSV();
-        _rigidbody = GetComponent<Rigidbody>();
-        Vector3 scale = transform.localScale;
-        transform.localScale = scale / ScaleReduce;
+        Renderer = GetComponent<Renderer>();
+        Renderer.material.color = Random.ColorHSV();
+        Rigidbody = GetComponent<Rigidbody>();
+        transform.localScale = transform.localScale / scaleReduce;
     }
 }

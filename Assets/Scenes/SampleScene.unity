@@ -845,7 +845,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1726054385}
   - component: {fileID: 1726054389}
-  - component: {fileID: 1726054388}
   - component: {fileID: 1726054387}
   - component: {fileID: 1726054386}
   - component: {fileID: 1726054390}
@@ -900,21 +899,6 @@ MonoBehaviour:
   _clickReader: {fileID: 1726054389}
   _baseCube: {fileID: 6139947605976511396, guid: 97e8b1294c672964e9feafe750f98af6, type: 3}
   _spawnpoint: {x: 0, y: 10, z: 0}
---- !u!114 &1726054388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1726054382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94bc0505704bb044c8cb3b68afc55a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _minAmount: 2
-  _maxAmount: 6
-  _exploder: {fileID: 1726054386}
 --- !u!114 &1726054389
 MonoBehaviour:
   m_ObjectHideFlags: 0

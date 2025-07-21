@@ -1,17 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Exploder : MonoBehaviour 
 {
-    public void Explode(List<Rigidbody> explodableObjects, Cube cube)
-    {
-        foreach (Rigidbody obj in explodableObjects)
-        {
-            obj.AddExplosionForce(GetExplosionForce(cube, obj), cube.transform.position, cube.ExplodeRadius);
-        }
-    }
-
     public void Explode(List<Cube> cubes, Cube cube)
     {
         List<Rigidbody> explodableObjects = GetRigidbodies(cubes);
@@ -23,10 +16,19 @@ public class Exploder : MonoBehaviour
         Explode(GetExplodableObjects(cube), cube);
     }
 
+    private void Explode(List<Rigidbody> explodableObjects, Cube cube)
+    {
+        foreach (Rigidbody obj in explodableObjects)
+        {
+            obj.AddExplosionForce(GetExplosionForce(cube, obj), cube.transform.position, cube.ExplodeRadius);
+        }
+    }
+
     private float GetExplosionForce(Cube cube, Rigidbody obj)
     {
-        float distance = Vector3.Distance(cube.transform.position, obj.transform.position);
-        float forceModifier = (cube.ExplodeRadius - distance) / cube.ExplodeRadius;
+        float squareDistance = (cube.transform.position - obj.transform.position).sqrMagnitude;
+        float modifiedExplodeRadius = math.pow(cube.ExplodeRadius, 2);
+        float forceModifier = (modifiedExplodeRadius - squareDistance) /  modifiedExplodeRadius;
 
         return cube.ExplodeForce * forceModifier;
     }
@@ -52,8 +54,7 @@ public class Exploder : MonoBehaviour
 
         foreach (Cube newCube in cubes)
         {
-            if (newCube.TryGetComponent<Rigidbody>(out Rigidbody cubeRigidBody))
-                rigidbodies.Add(cubeRigidBody);
+            rigidbodies.Add(newCube.Rigidbody);
         }
 
         return rigidbodies;
