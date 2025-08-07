@@ -12,9 +12,10 @@ public class Cube : MonoBehaviour
     private int _explodeForce = 300;
     private int _explodeRadius = 3;
     private float _actionChance;
-    private Renderer Renderer;
+    private Renderer _renderer;
+    private Rigidbody _rigidbody;
 
-    public Rigidbody Rigidbody;
+    public Rigidbody Rigidbody => _rigidbody;
     public int ExplodeForce => _explodeForce;
     public int ExplodeRadius => _explodeRadius;
     public float ActionChance => _actionChance;
@@ -26,9 +27,9 @@ public class Cube : MonoBehaviour
         _explodeRadius *= 2;
         _actionChance = 100 / _generation;
 
-        Renderer = GetComponent<Renderer>();
-        Renderer.material.color = Random.ColorHSV();
-        Rigidbody = GetComponent<Rigidbody>();
+        _renderer = GetComponent<Renderer>();
+        _renderer.material.color = Random.ColorHSV();
+        _rigidbody = GetComponent<Rigidbody>();
         transform.localScale = transform.localScale / scaleReduce;
     }
 }
