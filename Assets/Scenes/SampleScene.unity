@@ -849,7 +849,7 @@ GameObject:
   - component: {fileID: 1726054386}
   - component: {fileID: 1726054390}
   m_Layer: 0
-  m_Name: CubeHandler
+  m_Name: CubeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

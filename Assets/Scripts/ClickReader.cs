@@ -15,8 +15,8 @@ public class ClickReader : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if(hit.collider.TryGetComponent(out Cube cube))
-                    CubeClicked(cube);
+                if (hit.collider.TryGetComponent(out Cube cube))
+                    CubeClicked?.Invoke(cube);
             }
         }
     }

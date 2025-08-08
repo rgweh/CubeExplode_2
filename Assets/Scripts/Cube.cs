@@ -7,29 +7,29 @@ using UnityEngine.InputSystem.XR.Haptics;
 public class Cube : MonoBehaviour
 {
     [SerializeField] private int _generation;
+    [SerializeField] private int _initialExplodeForce = 300;
+    [SerializeField] private int _initialExplodeRadius = 4;
 
     private float scaleReduce = 2;
-    private int _explodeForce = 300;
-    private int _explodeRadius = 3;
-    private float _actionChance;
+    private int _maxChance = 100;
     private Renderer _renderer;
-    private Rigidbody _rigidbody;
 
-    public Rigidbody Rigidbody => _rigidbody;
-    public int ExplodeForce => _explodeForce;
-    public int ExplodeRadius => _explodeRadius;
-    public float ActionChance => _actionChance;
+    public Rigidbody Rigidbody { get; private set; }
+    public float ActionChance { get; private set; }
+    public int ExplodeForce { get; private set; }
+    public int ExplodeRadius { get; private set; }
 
     private void Awake()
     {
         _generation++;
-        _explodeForce *= 2;
-        _explodeRadius *= 2;
-        _actionChance = 100 / _generation;
+        ExplodeForce = _initialExplodeForce * _generation;
+        ExplodeRadius = _initialExplodeRadius * _generation;
+        ActionChance = _maxChance / _generation;
 
         _renderer = GetComponent<Renderer>();
         _renderer.material.color = Random.ColorHSV();
-        _rigidbody = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         transform.localScale = transform.localScale / scaleReduce;
+        Debug.Log("radius = " + ExplodeRadius);
     }
 }
