@@ -8,6 +8,11 @@ public class CubeSpawner : MonoBehaviour
     [SerializeField] private Vector3 _spawnPoint;
     [SerializeField] private Cube _baseCube;
 
+    private void OnEnable()
+    {
+        Instantiate(_baseCube, _spawnPoint, Quaternion.identity);
+    }
+
     public List<Cube> SpawnCubes(Cube cube)
     {
         int amount = Random.Range(_minAmount, _maxAmount + 1);
@@ -20,11 +25,6 @@ public class CubeSpawner : MonoBehaviour
         }
 
         return createdCubes;
-    }
-
-    public Cube SpawnBaseCube()
-    {
-        return Instantiate(_baseCube, _spawnPoint, Quaternion.identity);
     }
 
     public void DestroyCube(Cube cube)

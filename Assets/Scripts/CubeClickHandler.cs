@@ -13,7 +13,6 @@ public class CubeClickHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _cubeSpawner.SpawnBaseCube();
         _clickReader.CubeClicked += OnCubeClicked;
     }
 
