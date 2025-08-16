@@ -848,6 +848,7 @@ GameObject:
   - component: {fileID: 1726054387}
   - component: {fileID: 1726054386}
   - component: {fileID: 1726054390}
+  - component: {fileID: 1726054391}
   m_Layer: 0
   m_Name: CubeManager
   m_TagString: Untagged
@@ -897,8 +898,6 @@ MonoBehaviour:
   _cubeSpawner: {fileID: 1726054390}
   _exploder: {fileID: 1726054386}
   _clickReader: {fileID: 1726054389}
-  _baseCube: {fileID: 6139947605976511396, guid: 97e8b1294c672964e9feafe750f98af6, type: 3}
-  _spawnpoint: {x: 0, y: 10, z: 0}
 --- !u!114 &1726054389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,6 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d3a29a96178ac6448b2168ff0232abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rayCaster: {fileID: 1726054391}
 --- !u!114 &1726054390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -925,6 +925,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _minAmount: 2
   _maxAmount: 6
+  _spawnPoint: {x: 0, y: 5, z: 0}
+  _baseCube: {fileID: 6139947605976511396, guid: 97e8b1294c672964e9feafe750f98af6, type: 3}
+--- !u!114 &1726054391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726054382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cad59ea5404b4a4f90c49d01298266c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

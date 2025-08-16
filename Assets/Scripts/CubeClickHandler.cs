@@ -1,20 +1,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickManager : MonoBehaviour
+public class CubeClickHandler : MonoBehaviour
 {
     [SerializeField] private CubeSpawner _cubeSpawner;
     [SerializeField] private Exploder _exploder;
     [SerializeField] private ClickReader _clickReader;
-    [SerializeField] private Cube _baseCube;
-    [SerializeField] private Vector3 _spawnpoint;
+
 
     private int _minChance = 0;
     private int _maxChance = 100;
 
     private void OnEnable()
     {
-        Cube firstCube = Instantiate(_baseCube, _spawnpoint, Quaternion.identity);
+        _cubeSpawner.SpawnBaseCube();
         _clickReader.CubeClicked += OnCubeClicked;
     }
 
@@ -25,7 +24,7 @@ public class ClickManager : MonoBehaviour
 
     private void OnCubeClicked(Cube cube)
     {
-        if (Random.Range(_minChance, _maxChance) < cube.ActionChance)
+        if (Random.Range(_minChance, _maxChance) < cube.DuplicatingChance)
         {
             List<Cube> createdCubes = _cubeSpawner.SpawnCubes(cube);
             _exploder.Explode(createdCubes, cube);
@@ -37,5 +36,4 @@ public class ClickManager : MonoBehaviour
         
         _cubeSpawner.DestroyCube(cube);
     }
-
 }

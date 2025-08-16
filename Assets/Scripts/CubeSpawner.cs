@@ -5,6 +5,8 @@ public class CubeSpawner : MonoBehaviour
 {
     [SerializeField] private int _minAmount = 2;
     [SerializeField] private int _maxAmount = 6;
+    [SerializeField] private Vector3 _spawnPoint;
+    [SerializeField] private Cube _baseCube;
 
     public List<Cube> SpawnCubes(Cube cube)
     {
@@ -18,6 +20,11 @@ public class CubeSpawner : MonoBehaviour
         }
 
         return createdCubes;
+    }
+
+    public Cube SpawnBaseCube()
+    {
+        return Instantiate(_baseCube, _spawnPoint, Quaternion.identity);
     }
 
     public void DestroyCube(Cube cube)
